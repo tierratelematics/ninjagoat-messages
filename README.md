@@ -6,12 +6,12 @@ A ninjagoat "toast like" messages presenter module.
 
 ## Usage
 
-There two types of messages, *success*:
+There two types of messages, *Success*:
 ```typescript
 messageService.success("Your messages to display!", "Headline Title");
 ```
 
-and *failure*:
+and *Failure*:
 ```typescript
 messageService.failure("Your failure messages to display!", "Headline Title");
 ```

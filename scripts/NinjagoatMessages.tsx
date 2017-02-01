@@ -1,10 +1,10 @@
 import * as React from "react";
 import {AlertList} from "react-bs-notifier";
-import NinjagoatMessagesService from "./NinjagoatMessagesService";
+import MessagesService from "./MessagesService";
 import * as Rx from "rx";
 import {IMessageData} from "./interfaces/IMessageData";
 
-class NinjagoatMessages extends React.Component<{messagesService: NinjagoatMessagesService}, IMessageData[]> {
+class NinjagoatMessages extends React.Component<{messagesService: MessagesService}, IMessageData[]> {
     private subscription: Rx.Disposable;
     private messages: IMessageData[] = [];
 
