@@ -27,7 +27,7 @@ export class MessagesService implements IMessagesService, IObservable<IMessageDa
     subscribe(onNext?: (value: IMessageData) => void, onError?: (exception: any) => void, onCompleted?: () => void): Rx.IDisposable;
     subscribe(observerOrOnNext?: (Rx.IObserver<IMessageData>) | ((value: IMessageData) => void), onError?: (exception: any) => void, onCompleted?: () => void): Rx.IDisposable;
 
-    deleteMessage(message:IMessageData, fromList: IMessageData[]): IMessageData[];
+    deleteMessage(message:IMessageData, messagesList: IMessageData[]): IMessageData[];
 }
 
 export class MessagesModule implements IModule {
