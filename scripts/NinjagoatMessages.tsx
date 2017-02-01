@@ -20,7 +20,6 @@ class NinjagoatMessages extends React.Component<{messagesService: MessagesServic
 
     componentWillMount():void {
         this.subscription = this.props.messagesService.subscribe(messageData => {
-            console.log(messageData);
             this.messages.push(messageData);
             this.setState(this.messages);
         });
@@ -28,7 +27,6 @@ class NinjagoatMessages extends React.Component<{messagesService: MessagesServic
 
     componentWillUnmount():void {
         if (this.subscription) this.subscription.dispose();
-        this.props.messagesService.dispose();
     }
 
 }
