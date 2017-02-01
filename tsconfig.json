@@ -17,7 +17,7 @@
     ]
   },
   "include": [
-    "node_modules/rx/ts/rx.all.d.ts"
+    "node_modules/rx/ts/rx.all.d.ts", "scripts", "test"
   ],
   "exclude": ["node_modules"]
 }
