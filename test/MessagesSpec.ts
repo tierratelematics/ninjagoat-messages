@@ -1,19 +1,19 @@
 import "reflect-metadata"
 import expect =  require("expect.js");
-import NinjagoatMessagesService from "../scripts/NinjagoatMessagesService";
+import MessagesService from "../scripts/MessagesService";
 import Rx = require("rx");
-import {IMessageData, MessageType} from "../scripts/interfaces/IMessageData";
-import DefaultConfig from "../scripts/DefaultConfig";
-import {NULL_ARGUMENT} from "inversify/dts/constants/error_msgs";
+import {IMessageData} from "../scripts/interfaces/IMessageData";
+import MessageType from "../scripts/MessageType";
+
 
 describe("Given an alertService", () => {
 
-    let subject: NinjagoatMessagesService;
+    let subject: MessagesService;
     let notifications: IMessageData[];
 
     beforeEach(() => {
         notifications = [];
-        subject = new NinjagoatMessagesService();
+        subject = new MessagesService();
         subject.subscribe(alertData => notifications.push(alertData));
     });
 
@@ -21,10 +21,11 @@ describe("Given an alertService", () => {
         it("should present a green alert box", () => {
             subject.success("Test message");
             let messageData = notifications[0];
-            expect(messageData.type).to.be(MessageType.success);
+            expect(messageData.type).to.be(MessageType.Success);
             expect(messageData.message).to.be("Test message");
             expect(messageData.id).to.not.be(undefined);
         });
+
         context("but the message is not provided", () => {
             it("should throw an error", () => {
                 expect(() => {
@@ -38,7 +39,7 @@ describe("Given an alertService", () => {
         it("should present a red box", () => {
             subject.failure("Test Error message");
             let messageData = notifications[0];
-            expect(messageData.type).to.be(MessageType.failure);
+            expect(messageData.type).to.be(MessageType.Failure);
             expect(messageData.message).to.be("Test Error message");
             expect(messageData.id).to.not.be(undefined);
         });
@@ -54,7 +55,7 @@ describe("Given an alertService", () => {
         context("but a custom timeout is not provided", () => {
             it("should disappear automatically after default time", () => {
                 subject.success("Test message");
-                let config = new DefaultConfig();
+                let config = notifications[0];
                 expect(config.timeout).to.be(5000);
             });
         });
@@ -69,11 +70,16 @@ describe("Given an alertService", () => {
 
         context("but the user closes a message", () => {
             it("should disappear immediately", () => {
-                let messageData = notifications[0];
+                let messageData = {
+                    id: (new Date()).getTime(),
+                    message: "",
+                    headline: "",
+                    type: MessageType.Success
+                };
                 let messages = [];
                 messages.push(messageData);
                 let newList = subject.deleteMessage(messageData, messages);
-                expect(newList[0]).to.be(null || undefined);
+                expect(newList[0]).to.be(undefined);
             })
         })
     });

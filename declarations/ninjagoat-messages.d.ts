@@ -12,12 +12,12 @@ export interface IMessagesService {
     failure(message: string, title?: string, timeout?: number);
 }
 
-export class NinjagoatMessages extends React.Component<{messagesService: NinjagoatMessagesService}, IMessageData[]> {
+export class NinjagoatMessages extends React.Component<{messagesService: MessagesService}, IMessageData[]> {
 
     render();
 }
 
-export class NinjagoatMessagesService implements IMessagesService, IObservable<IMessageData> {
+export class MessagesService implements IMessagesService, IObservable<IMessageData> {
 
     success(message: string, title?: string, timeout?: number);
 
@@ -27,7 +27,7 @@ export class NinjagoatMessagesService implements IMessagesService, IObservable<I
     subscribe(onNext?: (value: IMessageData) => void, onError?: (exception: any) => void, onCompleted?: () => void): Rx.IDisposable;
     subscribe(observerOrOnNext?: (Rx.IObserver<IMessageData>) | ((value: IMessageData) => void), onError?: (exception: any) => void, onCompleted?: () => void): Rx.IDisposable;
 
-    deleteMessage(message:IMessageData, fromList: IMessageData[]): IMessageData[];
+    deleteMessage(message:IMessageData, messagesList: IMessageData[]): IMessageData[];
 }
 
 export class MessagesModule implements IModule {
@@ -43,8 +43,8 @@ export interface IMessagesConfig {
 }
 
 export class MessagePosition {
-    public static topLeft: string;
-    public static topRight: string;
-    public static bottomLeft: string;
-    public static bottomRight: string;
+    public static TopLeft: string;
+    public static TopRight: string;
+    public static BottomLeft: string;
+    public static BottomRight: string;
 }
