@@ -18,5 +18,6 @@
   },
   "include": [
     "node_modules/rx/ts/rx.all.d.ts"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }
