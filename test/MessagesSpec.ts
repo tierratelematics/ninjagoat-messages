@@ -55,7 +55,7 @@ describe("Given an alertService", () => {
         context("but a custom timeout is not provided", () => {
             it("should disappear automatically after default time", () => {
                 subject.success("Test message");
-                let config = new DefaultConfig();
+                let config = notifications[0];
                 expect(config.timeout).to.be(5000);
             });
         });
@@ -70,11 +70,16 @@ describe("Given an alertService", () => {
 
         context("but the user closes a message", () => {
             it("should disappear immediately", () => {
-                let messageData = notifications[0];
+                let messageData = {
+                    id: (new Date()).getTime(),
+                    message: "",
+                    headline: "",
+                    type: MessageType.Success
+                };
                 let messages = [];
                 messages.push(messageData);
                 let newList = subject.deleteMessage(messageData, messages);
-                expect(newList[0]).to.be(null || undefined);
+                expect(newList[0]).to.be(undefined);
             })
         })
     });
