@@ -43,8 +43,8 @@ export interface IMessagesConfig {
 }
 
 export class MessagePosition {
-    public static topLeft: string;
-    public static topRight: string;
-    public static bottomLeft: string;
-    public static bottomRight: string;
+    public static TopLeft: string;
+    public static TopRight: string;
+    public static BottomLeft: string;
+    public static BottomRight: string;
 }
