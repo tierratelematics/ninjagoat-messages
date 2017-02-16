@@ -1,4 +1,3 @@
-import {IMessageData} from "../scripts/interfaces/IMessageData";
 import IObservable = Rx.IObservable;
 import {interfaces} from "inversify";
 import {IModule} from "ninjagoat";
