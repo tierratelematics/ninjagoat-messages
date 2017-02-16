@@ -5,6 +5,7 @@ import {IModule} from "ninjagoat";
 import {IServiceLocator} from "ninjagoat";
 import {IViewModelRegistry} from "ninjagoat";
 import * as React from "react";
+import MessageType from "../scripts/MessageType";
 
 export interface IMessagesService {
     success(message: string, title?: string, timeout?: number);
@@ -47,4 +48,13 @@ export class MessagePosition {
     public static TopRight: string;
     public static BottomLeft: string;
     public static BottomRight: string;
+}
+
+export interface IMessageData {
+    id: number;
+    message: string;
+    headline: string;
+    type: MessageType;
+    timeout?: number;
+    position?: string;
 }
