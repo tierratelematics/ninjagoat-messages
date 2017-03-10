@@ -1,5 +1,5 @@
-import IObservable = Rx.IObservable;
 import {interfaces} from "inversify";
+import {IObservable, IObserver, IDisposable} from "rx";
 import {IModule} from "ninjagoat";
 import {IServiceLocator} from "ninjagoat";
 import {IViewModelRegistry} from "ninjagoat";
@@ -22,9 +22,9 @@ export class MessagesService implements IMessagesService, IObservable<IMessageDa
 
     failure(message: string, title?: string, timeout?: number);
 
-    subscribe(observer: Rx.IObserver<IMessageData>): Rx.IDisposable;
-    subscribe(onNext?: (value: IMessageData) => void, onError?: (exception: any) => void, onCompleted?: () => void): Rx.IDisposable;
-    subscribe(observerOrOnNext?: (Rx.IObserver<IMessageData>) | ((value: IMessageData) => void), onError?: (exception: any) => void, onCompleted?: () => void): Rx.IDisposable;
+    subscribe(observer: IObserver<IMessageData>): IDisposable;
+    subscribe(onNext?: (value: IMessageData) => void, onError?: (exception: any) => void, onCompleted?: () => void): IDisposable;
+    subscribe(observerOrOnNext?: (IObserver<IMessageData>) | ((value: IMessageData) => void), onError?: (exception: any) => void, onCompleted?: () => void): IDisposable;
 
     deleteMessage(message:IMessageData, messagesList: IMessageData[]): IMessageData[];
 }
