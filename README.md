@@ -1,7 +1,49 @@
-#ninjagoat-messages
+# Ninjagoat-messages
 
 ## Introduction
 A ninjagoat "toast like" messages presenter module.
+
+## Installation
+
+`
+$ npm install ninjagoat-messages
+`
+
+Add this code to the bootstrapper.ts file:
+
+```typescript
+import {MessagesModule} from "ninjagoat-messages"
+
+application.register(new MessagesModule());
+```
+
+Inject into your MasterViewModel a MessagesService.
+
+```typescript
+import {MessagesService} from "ninjagoat-messages";
+
+class MasterViewModel extends ObservableViewModel<MasterModel> {
+    constructor(@inject("IMessagesService") public messagesService: MessagesService) {
+
+    }
+}
+```
+
+And bind the messages service with its component in the Master view.
+
+```typescript
+import {NinjagoatMessages} from "ninjagoat-messages";
+
+class MasterView extends View<MasterViewModel> {
+
+    render() {
+        <div>
+            {this.props.children}
+                <NinjagoatMessages messagesService={ this.viewModel.messagesService}/>
+        </div>
+    }
+}
+```
 
 
 ## Usage
