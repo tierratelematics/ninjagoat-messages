@@ -1,4 +1,4 @@
-#ninjagoat-messages
+# Ninjagoat-messages
 
 ## Introduction
 A ninjagoat "toast like" messages presenter module.
