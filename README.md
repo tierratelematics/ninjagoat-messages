@@ -17,19 +17,8 @@ import {MessagesModule} from "ninjagoat-messages"
 application.register(new MessagesModule());
 ```
 
-Inject into your MasterViewModel a MessagesService.
 
-```typescript
-import {MessagesService} from "ninjagoat-messages";
-
-class MasterViewModel extends ObservableViewModel<MasterModel> {
-    constructor(@inject("IMessagesService") public messagesService: MessagesService) {
-
-    }
-}
-```
-
-And bind the messages service with its component in the Master view.
+And bind the messages service to the Master view:
 
 ```typescript
 import {NinjagoatMessages} from "ninjagoat-messages";
@@ -39,7 +28,7 @@ class MasterView extends View<MasterViewModel> {
     render() {
         <div>
             {this.props.children}
-                <NinjagoatMessages messagesService={ this.viewModel.messagesService}/>
+                <NinjagoatMessages/>
         </div>
     }
 }

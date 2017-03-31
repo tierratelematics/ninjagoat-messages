@@ -11,7 +11,7 @@ export interface IMessagesService {
     failure(message: string, title?: string, timeout?: number);
 }
 
-export class NinjagoatMessages extends React.Component<{messagesService: MessagesService}, IMessageData[]> {
+export class NinjagoatMessages extends React.Component<{}, IMessageData[]> {
 
     render();
 }
