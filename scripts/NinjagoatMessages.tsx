@@ -3,8 +3,13 @@ import {AlertList} from "react-bs-notifier";
 import MessagesService from "./MessagesService";
 import * as Rx from "rx";
 import {IMessageData} from "./interfaces/IMessageData";
+import {lazyInject} from "ninjagoat";
 
-class NinjagoatMessages extends React.Component<{messagesService: MessagesService}, IMessageData[]> {
+
+class NinjagoatMessages extends React.Component<{}, IMessageData[]> {
+
+    @lazyInject("IMessageService")
+    private messagesService: MessagesService;
     private subscription: Rx.Disposable;
     private messages: IMessageData[] = [];
 
@@ -14,12 +19,12 @@ class NinjagoatMessages extends React.Component<{messagesService: MessagesServic
     }
 
     onAlertDismissed(alert) {
-        this.messages = this.props.messagesService.deleteMessage(alert, this.messages);
+        this.messages = this.messagesService.deleteMessage(alert, this.messages);
         this.setState(this.messages);
     }
 
     componentWillMount():void {
-        this.subscription = this.props.messagesService.subscribe(messageData => {
+        this.subscription = this.messagesService.subscribe(messageData => {
             this.messages.push(messageData);
             this.setState(this.messages);
         });
