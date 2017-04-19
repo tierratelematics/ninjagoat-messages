@@ -8,7 +8,7 @@ import {lazyInject} from "ninjagoat";
 
 class NinjagoatMessages extends React.Component<{}, IMessageData[]> {
 
-    @lazyInject("IMessageService")
+    @lazyInject("IMessagesService")
     private messagesService: MessagesService;
     private subscription: Rx.Disposable;
     private messages: IMessageData[] = [];
