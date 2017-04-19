@@ -1,6 +1,5 @@
-import {IMessageData} from "../scripts/interfaces/IMessageData";
-import IObservable = Rx.IObservable;
 import {interfaces} from "inversify";
+import {IObservable, IObserver, IDisposable} from "rx";
 import {IModule} from "ninjagoat";
 import {IServiceLocator} from "ninjagoat";
 import {IViewModelRegistry} from "ninjagoat";
@@ -12,7 +11,7 @@ export interface IMessagesService {
     failure(message: string, title?: string, timeout?: number);
 }
 
-export class NinjagoatMessages extends React.Component<{messagesService: MessagesService}, IMessageData[]> {
+export class NinjagoatMessages extends React.Component<{}, IMessageData[]> {
 
     render();
 }
@@ -23,9 +22,9 @@ export class MessagesService implements IMessagesService, IObservable<IMessageDa
 
     failure(message: string, title?: string, timeout?: number);
 
-    subscribe(observer: Rx.IObserver<IMessageData>): Rx.IDisposable;
-    subscribe(onNext?: (value: IMessageData) => void, onError?: (exception: any) => void, onCompleted?: () => void): Rx.IDisposable;
-    subscribe(observerOrOnNext?: (Rx.IObserver<IMessageData>) | ((value: IMessageData) => void), onError?: (exception: any) => void, onCompleted?: () => void): Rx.IDisposable;
+    subscribe(observer: IObserver<IMessageData>): IDisposable;
+    subscribe(onNext?: (value: IMessageData) => void, onError?: (exception: any) => void, onCompleted?: () => void): IDisposable;
+    subscribe(observerOrOnNext?: (IObserver<IMessageData>) | ((value: IMessageData) => void), onError?: (exception: any) => void, onCompleted?: () => void): IDisposable;
 
     deleteMessage(message:IMessageData, messagesList: IMessageData[]): IMessageData[];
 }
@@ -47,4 +46,18 @@ export class MessagePosition {
     public static TopRight: string;
     public static BottomLeft: string;
     public static BottomRight: string;
+}
+
+export default class MessageType {
+    public static Success: string;
+    public static Failure: string;
+}
+
+export interface IMessageData {
+    id: number;
+    message: string;
+    headline: string;
+    type: MessageType;
+    timeout?: number;
+    position?: string;
 }
