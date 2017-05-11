@@ -6,7 +6,7 @@ import {IMessageData} from "../scripts/interfaces/IMessageData";
 import MessageType from "../scripts/MessageType";
 import {MockTranslationsManager} from "./fixtures/MockTranslationsManager";
 import * as TypeMoq from "typemoq";
-import {ITranslationsManager, TranslationsManager} from "ninjagoat-translations";
+import {ITranslationsManager} from "ninjagoat-translations";
 
 
 describe("Given an alertService", () => {
