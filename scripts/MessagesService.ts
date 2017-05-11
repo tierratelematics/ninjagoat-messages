@@ -12,8 +12,8 @@ import {TranslationsManager} from "ninjagoat-translations";
 @injectable()
 class MessagesService implements IMessagesService, Rx.IObservable<IMessageData> {
 
-    @lazyInject("ITranslationsManager");
-    private translationsManager: TranslationsManager;
+    @lazyInject("ITranslationsManager")
+    public translationsManager: TranslationsManager;
     private subject = new Rx.Subject<IMessageData>();
 
     constructor(@inject("IAlertConfig") @optional() private config: IMessagesConfig = new DefaultConfig()) {
