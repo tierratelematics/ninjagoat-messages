@@ -30,9 +30,10 @@ class MessagesService implements IMessagesService, Rx.IObservable<IMessageData> 
 
     private createMessage(message: string, type: MessageType, title?: string, timeout?: number) {
         let timeoutValue = timeout ? timeout : this.config.timeout;
+
         let configData = {
             id: (new Date()).getTime(),
-            message: message,
+            message: (this.translationsManager) ? this.translationsManager.translate(message) : message,
             headline: title,
             type: type,
             timeout: type === MessageType.Success ? timeoutValue : undefined,
@@ -56,7 +57,6 @@ class MessagesService implements IMessagesService, Rx.IObservable<IMessageData> 
             return [...messagesList.slice(0, idx), ...messagesList.slice(idx + 1)];
         }
         return messagesList;
-
     }
 }
 
