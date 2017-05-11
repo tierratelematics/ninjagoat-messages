@@ -6,10 +6,14 @@ import * as Rx from "rx";
 import {IMessageData} from "./interfaces/IMessageData";
 import {injectable} from "inversify";
 import MessageType from "./MessageType";
+import {lazyInject} from "ninjagoat";
+import {TranslationsManager} from "ninjagoat-translations";
 
 @injectable()
 class MessagesService implements IMessagesService, Rx.IObservable<IMessageData> {
 
+    @lazyInject("ITranslationsManager");
+    private translationsManager: TranslationsManager;
     private subject = new Rx.Subject<IMessageData>();
 
     constructor(@inject("IAlertConfig") @optional() private config: IMessagesConfig = new DefaultConfig()) {
