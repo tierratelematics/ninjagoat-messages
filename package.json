@@ -17,7 +17,8 @@
     "expect.js": "~0.3.1"
   },
   "peerDependencies": {
-    "ninjagoat": "^2.1.0"
+    "ninjagoat": "^2.1.0",
+    "ninjagoat-translations": "^3.0.0"
   },
   "scripts": {
     "test": "smild test"
