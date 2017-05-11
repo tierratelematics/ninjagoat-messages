@@ -34,7 +34,7 @@ class MessagesService implements IMessagesService, Rx.IObservable<IMessageData> 
         let configData = {
             id: (new Date()).getTime(),
             message: (this.translationsManager) ? this.translationsManager.translate(message) : message,
-            headline: title,
+            headline: (this.translationsManager) ? this.translationsManager.translate(title) : title,
             type: type,
             timeout: type === MessageType.Success ? timeoutValue : undefined,
             position: this.config.position
