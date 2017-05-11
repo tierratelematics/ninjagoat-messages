@@ -6,10 +6,14 @@ import * as Rx from "rx";
 import {IMessageData} from "./interfaces/IMessageData";
 import {injectable} from "inversify";
 import MessageType from "./MessageType";
+import {lazyInject} from "ninjagoat";
+import {TranslationsManager} from "ninjagoat-translations";
 
 @injectable()
 class MessagesService implements IMessagesService, Rx.IObservable<IMessageData> {
 
+    @lazyInject("ITranslationsManager")
+    public translationsManager: TranslationsManager;
     private subject = new Rx.Subject<IMessageData>();
 
     constructor(@inject("IAlertConfig") @optional() private config: IMessagesConfig = new DefaultConfig()) {
@@ -26,10 +30,11 @@ class MessagesService implements IMessagesService, Rx.IObservable<IMessageData> 
 
     private createMessage(message: string, type: MessageType, title?: string, timeout?: number) {
         let timeoutValue = timeout ? timeout : this.config.timeout;
+
         let configData = {
             id: (new Date()).getTime(),
-            message: message,
-            headline: title,
+            message: (this.translationsManager) ? this.translationsManager.translate(message) : message,
+            headline: (this.translationsManager) ? this.translationsManager.translate(title) : title,
             type: type,
             timeout: type === MessageType.Success ? timeoutValue : undefined,
             position: this.config.position
@@ -52,7 +57,6 @@ class MessagesService implements IMessagesService, Rx.IObservable<IMessageData> 
             return [...messagesList.slice(0, idx), ...messagesList.slice(idx + 1)];
         }
         return messagesList;
-
     }
 }
 

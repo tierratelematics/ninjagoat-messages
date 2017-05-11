@@ -4,16 +4,26 @@ import MessagesService from "../scripts/MessagesService";
 import Rx = require("rx");
 import {IMessageData} from "../scripts/interfaces/IMessageData";
 import MessageType from "../scripts/MessageType";
+import {MockTranslationsManager} from "./fixtures/MockTranslationsManager";
+import * as TypeMoq from "typemoq";
+import {ITranslationsManager} from "ninjagoat-translations";
 
 
 describe("Given an alertService", () => {
 
     let subject: MessagesService;
     let notifications: IMessageData[];
+    let mockTranslationsManager: TypeMoq.IMock<ITranslationsManager>;
 
     beforeEach(() => {
         notifications = [];
+        mockTranslationsManager = TypeMoq.Mock.ofType(MockTranslationsManager);
+        mockTranslationsManager.setup(manager => manager.translate("Test message")).returns(() => {
+            return "A valid translation";
+        });
+
         subject = new MessagesService();
+        subject.translationsManager = mockTranslationsManager.object;
         subject.subscribe(alertData => notifications.push(alertData));
     });
 
@@ -22,7 +32,7 @@ describe("Given an alertService", () => {
             subject.success("Test message");
             let messageData = notifications[0];
             expect(messageData.type).to.be(MessageType.Success);
-            expect(messageData.message).to.be("Test message");
+            expect(messageData.message).to.be("A valid translation");
             expect(messageData.id).to.not.be(undefined);
         });
 
@@ -37,10 +47,10 @@ describe("Given an alertService", () => {
 
     context("when an error message needs to be displayed", () => {
         it("should present a red box", () => {
-            subject.failure("Test Error message");
+            subject.failure("Test message");
             let messageData = notifications[0];
             expect(messageData.type).to.be(MessageType.Failure);
-            expect(messageData.message).to.be("Test Error message");
+            expect(messageData.message).to.be("A valid translation");
             expect(messageData.id).to.not.be(undefined);
         });
 
