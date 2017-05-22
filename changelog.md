@@ -1,3 +1,7 @@
+# 0.4.0
+
+Use react as dependency
+
 # 0.2.1
 
 Fix IMessagesService lazy inject
