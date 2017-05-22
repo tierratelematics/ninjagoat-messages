@@ -4,7 +4,7 @@ node_js:
 install:
 - npm install
 - npm install smild@4.4.0 -g
-- npm install ninjagoat@2.1.0 ninjagoat-translations@3.0.0
+- npm install ninjagoat@2.3.0 ninjagoat-translations@3.1.0
 script:
 - smild test
 - smild build
