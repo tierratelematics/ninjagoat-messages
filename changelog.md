@@ -1,3 +1,7 @@
+# 1.0.0
+
+Major release
+
 # 0.4.0
 
 Use react as dependency
