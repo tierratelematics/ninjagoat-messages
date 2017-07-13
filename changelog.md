@@ -1,3 +1,7 @@
+# 1.1.0
+
+Bump to ninjagoat 2.4.0
+
 # 1.0.0
 
 Major release
