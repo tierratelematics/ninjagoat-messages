@@ -1,3 +1,7 @@
+# 1.1.1
+
+Fix a problem when using this module without ninjagoat-translations
+
 # 1.1.0
 
 Bump to ninjagoat 2.4.0
