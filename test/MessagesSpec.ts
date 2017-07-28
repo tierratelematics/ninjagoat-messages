@@ -1,10 +1,8 @@
-import "reflect-metadata"
+import "reflect-metadata";
 import expect =  require("expect.js");
 import MessagesService from "../scripts/MessagesService";
-import Rx = require("rx");
 import {IMessageData} from "../scripts/interfaces/IMessageData";
 import MessageType from "../scripts/MessageType";
-import {MockTranslationsManager} from "./fixtures/MockTranslationsManager";
 import * as TypeMoq from "typemoq";
 import {ITranslationsManager} from "ninjagoat-translations";
 
@@ -17,13 +15,12 @@ describe("Given an alertService", () => {
 
     beforeEach(() => {
         notifications = [];
-        mockTranslationsManager = TypeMoq.Mock.ofType(MockTranslationsManager);
+        mockTranslationsManager = TypeMoq.Mock.ofType<ITranslationsManager>();
         mockTranslationsManager.setup(manager => manager.translate("Test message")).returns(() => {
             return "A valid translation";
         });
 
-        subject = new MessagesService();
-        subject.translationsManager = mockTranslationsManager.object;
+        subject = new MessagesService(mockTranslationsManager.object);
         subject.subscribe(alertData => notifications.push(alertData));
     });
 
@@ -90,7 +87,7 @@ describe("Given an alertService", () => {
                 messages.push(messageData);
                 let newList = subject.deleteMessage(messageData, messages);
                 expect(newList[0]).to.be(undefined);
-            })
-        })
+            });
+        });
     });
 });
