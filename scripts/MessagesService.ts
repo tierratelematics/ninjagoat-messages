@@ -13,8 +13,8 @@ class MessagesService implements IMessagesService, Rx.IObservable<IMessageData> 
 
     private subject = new Rx.Subject<IMessageData>();
 
-    constructor(@inject("IAlertConfig") @optional() private config: IMessagesConfig = new DefaultConfig(),
-                @inject("ITranslationsManager") @optional() private translationsManager: ITranslationsManager) {
+    constructor(@inject("ITranslationsManager") @optional() private translationsManager: ITranslationsManager,
+                @inject("IAlertConfig") @optional() private config: IMessagesConfig = new DefaultConfig()) {
 
     }
 
