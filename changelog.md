@@ -1,3 +1,7 @@
+# 1.1.2
+
+Move types into dev deps
+
 # 1.1.1
 
 Fix a problem when using this module without ninjagoat-translations

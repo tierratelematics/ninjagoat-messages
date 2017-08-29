@@ -1,6 +1,6 @@
 {
   "name": "ninjagoat-messages",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "dependencies": {
     "inversify": "~3.0.0-rc.2",
     "lodash": "~4.10.0",
