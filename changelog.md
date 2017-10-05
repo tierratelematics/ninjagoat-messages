@@ -1,3 +1,6 @@
+# 1.1.3
+Fix notifier's version
+
 # 1.1.2
 
 Move types into dev deps
