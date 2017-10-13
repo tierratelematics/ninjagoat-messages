@@ -1,10 +1,10 @@
+import { lazyInject } from "ninjagoat";
 import * as React from "react";
-import {AlertList} from "react-bs-notifier";
-import MessagesService from "./MessagesService";
+import { AlertList } from "react-bs-notifier";
 import * as Rx from "rx";
-import {IMessageData} from "./interfaces/IMessageData";
-import {lazyInject} from "ninjagoat";
 
+import { IMessageData } from "./interfaces/IMessageData";
+import MessagesService from "./MessagesService";
 
 class NinjagoatMessages extends React.Component<{}, IMessageData[]> {
 
@@ -15,7 +15,7 @@ class NinjagoatMessages extends React.Component<{}, IMessageData[]> {
 
     render() {
         return <AlertList alerts={this.messages}
-                          onDismiss={this.onAlertDismissed.bind(this)}/>;
+            onDismiss={this.onAlertDismissed.bind(this)} />;
     }
 
     onAlertDismissed(alert) {
@@ -23,17 +23,17 @@ class NinjagoatMessages extends React.Component<{}, IMessageData[]> {
         this.setState(this.messages);
     }
 
-    componentWillMount():void {
+    componentWillMount(): void {
         this.subscription = this.messagesService.subscribe(messageData => {
             this.messages.push(messageData);
             this.setState(this.messages);
         });
     }
 
-    componentWillUnmount():void {
+    componentWillUnmount(): void {
         if (this.subscription) this.subscription.dispose();
     }
 
 }
 
-export default NinjagoatMessages
+export default NinjagoatMessages;

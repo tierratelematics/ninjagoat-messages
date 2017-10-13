@@ -1,4 +1,4 @@
-import {IMessagesConfig} from "./interfaces/IMessagesConfig";
+import { IMessagesConfig } from "./interfaces/IMessagesConfig";
 import MessagePosition from "./MessagePosition";
 
 class DefaultConfig implements IMessagesConfig {
@@ -6,5 +6,4 @@ class DefaultConfig implements IMessagesConfig {
     position = MessagePosition.TopRight;
 }
 
-export default DefaultConfig
-
+export default DefaultConfig;
