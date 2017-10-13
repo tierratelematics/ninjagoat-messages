@@ -1,9 +1,13 @@
+import { Origin } from "material-ui/Snackbar";
+
 import { IMessagesConfig } from "./interfaces/IMessagesConfig";
-import MessagePosition from "./MessagePosition";
 
 class DefaultConfig implements IMessagesConfig {
     timeout = 5000;
-    position = MessagePosition.TopRight;
+    position: Origin = {
+        vertical: "bottom",
+        horizontal: "center"
+    };
 }
 
 export default DefaultConfig;

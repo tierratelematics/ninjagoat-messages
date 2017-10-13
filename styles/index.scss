@@ -1,0 +1,25 @@
+.snackbar {
+    .snackbar__btn-close {
+        &:focus {
+            outline: none;
+        }
+        &.snackbar__btn-close--success {
+            color: #3c763d;
+            &:hover {
+                background-color: rgba(#3c763d, .12);
+            }
+        }
+        &.snackbar__btn-close--error {
+            color: #a94442;
+            &:hover {
+                background-color: rgba(#a94442, .12);
+            }
+        }
+        &.snackbar__btn-close--info {
+            color: #2E96D6;
+            &:hover {
+                background-color: rgba(#2E96D6, .12);
+            }
+        }
+    }
+}
