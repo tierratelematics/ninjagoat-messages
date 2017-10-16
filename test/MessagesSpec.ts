@@ -15,12 +15,8 @@ describe("Given an alertService", () => {
 
     beforeEach(() => {
         notifications = [];
-        mockTranslationsManager = TypeMoq.Mock.ofType<ITranslationsManager>();
-        mockTranslationsManager.setup(manager => manager.translate("Test message")).returns(() => {
-            return "A valid translation";
-        });
 
-        subject = new MessagesService(mockTranslationsManager.object);
+        subject = new MessagesService();
         subject.subscribe(alertData => notifications.push(alertData));
     });
 
@@ -29,7 +25,7 @@ describe("Given an alertService", () => {
             subject.success("Test message");
             let messageData = notifications[0];
             expect(messageData.type).to.be("success");
-            expect(messageData.message).to.be("A valid translation");
+            expect(messageData.message).to.be("Test message");
         });
 
         context("but the message is not provided", () => {
@@ -46,7 +42,7 @@ describe("Given an alertService", () => {
             subject.failure("Test message");
             let messageData = notifications[0];
             expect(messageData.type).to.be("error");
-            expect(messageData.message).to.be("A valid translation");
+            expect(messageData.message).to.be("Test message");
         });
 
         it("should not disappear automatically", () => {

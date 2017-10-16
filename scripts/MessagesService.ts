@@ -1,6 +1,5 @@
 import { inject, optional } from "inversify";
 import { injectable } from "inversify";
-import { ITranslationsManager } from "ninjagoat-translations";
 import * as Rx from "rx";
 
 import DefaultConfig from "./DefaultConfig";
@@ -13,9 +12,7 @@ import { MessageType } from "./MessageType";
 class MessagesService implements IMessagesService, Rx.IObservable<IMessageData> {
     private subject = new Rx.Subject<IMessageData>();
 
-    constructor( @inject("ITranslationsManager") @optional() private translationsManager: ITranslationsManager,
-        @inject("IAlertConfig") @optional() private config: IMessagesConfig = new DefaultConfig()) {
-    }
+    constructor( @inject("IAlertConfig") @optional() private config: IMessagesConfig = new DefaultConfig()) { }
 
     success(message: string, timeout?: number) {
         this.createMessage(message, "success", timeout || this.config.timeout);
@@ -40,7 +37,7 @@ class MessagesService implements IMessagesService, Rx.IObservable<IMessageData> 
 
     private createMessage(message: string, type: MessageType, timeout?: number) {
         let configData: IMessageData = {
-            message: this.translationsManager ? this.translationsManager.translate(message) : message,
+            message: message,
             type: type,
             timeout: timeout,
             position: this.config.position
