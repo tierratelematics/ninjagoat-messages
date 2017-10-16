@@ -1,11 +1,11 @@
 import "reflect-metadata";
-import expect =  require("expect.js");
-import MessagesService from "../scripts/MessagesService";
-import {IMessageData} from "../scripts/interfaces/IMessageData";
-import MessageType from "../scripts/MessageType";
-import * as TypeMoq from "typemoq";
-import {ITranslationsManager} from "ninjagoat-translations";
 
+import expect = require("expect.js");
+import { ITranslationsManager } from "ninjagoat-translations";
+import * as TypeMoq from "typemoq";
+
+import { IMessageData } from "../scripts/interfaces/IMessageData";
+import MessagesService from "../scripts/MessagesService";
 
 describe("Given an alertService", () => {
 
@@ -15,12 +15,8 @@ describe("Given an alertService", () => {
 
     beforeEach(() => {
         notifications = [];
-        mockTranslationsManager = TypeMoq.Mock.ofType<ITranslationsManager>();
-        mockTranslationsManager.setup(manager => manager.translate("Test message")).returns(() => {
-            return "A valid translation";
-        });
 
-        subject = new MessagesService(mockTranslationsManager.object);
+        subject = new MessagesService();
         subject.subscribe(alertData => notifications.push(alertData));
     });
 
@@ -28,9 +24,8 @@ describe("Given an alertService", () => {
         it("should present a green alert box", () => {
             subject.success("Test message");
             let messageData = notifications[0];
-            expect(messageData.type).to.be(MessageType.Success);
-            expect(messageData.message).to.be("A valid translation");
-            expect(messageData.id).to.not.be(undefined);
+            expect(messageData.type).to.be("success");
+            expect(messageData.message).to.be("Test message");
         });
 
         context("but the message is not provided", () => {
@@ -46,9 +41,8 @@ describe("Given an alertService", () => {
         it("should present a red box", () => {
             subject.failure("Test message");
             let messageData = notifications[0];
-            expect(messageData.type).to.be(MessageType.Failure);
-            expect(messageData.message).to.be("A valid translation");
-            expect(messageData.id).to.not.be(undefined);
+            expect(messageData.type).to.be("error");
+            expect(messageData.message).to.be("Test message");
         });
 
         it("should not disappear automatically", () => {
@@ -58,7 +52,7 @@ describe("Given an alertService", () => {
         });
     });
 
-    context("when a success message is displayed", () => {
+    context("when success message is displayed", () => {
         context("but a custom timeout is not provided", () => {
             it("should disappear automatically after default time", () => {
                 subject.success("Test message");
@@ -69,24 +63,27 @@ describe("Given an alertService", () => {
 
         context("but the timeout is provided", () => {
             it("should disappear after the provided timeout", () => {
-                subject.success("Test message", "", 10000);
+                subject.success("Test message", 10000);
                 let config = notifications[0];
                 expect(config.timeout).to.be(10000);
             });
         });
+    });
 
-        context("but the user closes a message", () => {
-            it("should disappear immediately", () => {
-                let messageData = {
-                    id: (new Date()).getTime(),
-                    message: "",
-                    headline: "",
-                    type: MessageType.Success
-                };
-                let messages = [];
-                messages.push(messageData);
-                let newList = subject.deleteMessage(messageData, messages);
-                expect(newList[0]).to.be(undefined);
+    context("when info message is displayed", () => {
+        context("but a custom timeout is not provided", () => {
+            it("should disappear automatically after default time", () => {
+                subject.info("Test message");
+                let config = notifications[0];
+                expect(config.timeout).to.be(5000);
+            });
+        });
+
+        context("but the timeout is provided", () => {
+            it("should disappear after the provided timeout", () => {
+                subject.info("Test message", 10000);
+                let config = notifications[0];
+                expect(config.timeout).to.be(10000);
             });
         });
     });
