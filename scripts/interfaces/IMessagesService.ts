@@ -1,6 +1,6 @@
 interface IMessagesService {
-    success(message:string, title?:string, timeout?:number);
-    failure(message:string, title?:string, timeout?:number);
+    success(message: string, timeout?: number);
+    failure(message: string, timeout?: number);
 }
 
-export default IMessagesService
+export default IMessagesService;
