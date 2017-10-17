@@ -1,0 +1,28 @@
+$snackbar-btn-success-color: #3c763d !default;
+$snackbar-btn-error-color: #a94442 !default;
+$snackbar-btn-info-color: #2E96D6 !default;
+.snackbar {
+    .snackbar__btn-close {
+        &:focus {
+            outline: none;
+        }
+        &.snackbar__btn-close--success {
+            color: $snackbar-btn-success-color;
+            &:hover {
+                background-color: rgba($snackbar-btn-success-color, .12);
+            }
+        }
+        &.snackbar__btn-close--error {
+            color: $snackbar-btn-error-color;
+            &:hover {
+                background-color: rgba($snackbar-btn-error-color, .12);
+            }
+        }
+        &.snackbar__btn-close--info {
+            color: $snackbar-btn-info-color;
+            &:hover {
+                background-color: rgba($snackbar-btn-info-color, .12);
+            }
+        }
+    }
+}
