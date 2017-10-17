@@ -1,4 +1,9 @@
+# 2.0.0
+
+Switch to material ui
+
 # 1.1.3
+
 Fix notifier's version
 
 # 1.1.2
