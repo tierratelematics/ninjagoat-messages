@@ -1,3 +1,7 @@
+# 2.1.0
+
+Bump inversify
+
 # 2.0.0
 
 Switch to material ui
