@@ -1,6 +1,6 @@
 {
   "name": "ninjagoat-messages",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "dependencies": {
     "classnames": "^2.2.5",
     "inversify": "^4.3.0",
