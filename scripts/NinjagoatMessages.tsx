@@ -39,16 +39,15 @@ class NinjagoatMessages extends React.Component<{}, INinjagoatMessagesState> {
     }
 
     render() {
-        return <Snackbar
-            className="snackbar"
+        return <Snackbar className="snackbar"
             open={this.state.open}
             anchorOrigin={this.state.message ? this.state.message.position : new DefaultConfig().position}
             autoHideDuration={this.state.message ? this.state.message.timeout : undefined}
-            onRequestClose={() => this.onAlertDismissed()}
+            onClose={() => this.onAlertDismissed()}
             message={<span>{this.state && this.state.message ? this.state.message.message : null}</span>}
             action={[
                 <Button key="close"
-                    dense
+                    size="small"
                     className={classNames("snackbar__btn-close", this.state.message && this.state.message.type ? `snackbar__btn-close--${this.state.message.type}` : null)}
                     onClick={() => this.onAlertDismissed()}>
                     <FormattedMessage id="glossary.close" defaultMessage="glossary.close" />

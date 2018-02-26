@@ -5,4 +5,4 @@ export { default as MessagesService } from "./MessagesService";
 export { default as NinjagoatMessages } from "./NinjagoatMessages";
 export { IMessagesConfig } from "./interfaces/IMessagesConfig";
 export { MessageType } from "./MessageType";
-export { Origin } from "material-ui/Snackbar";
+export { SnackBarOrigin } from "material-ui/Snackbar";

@@ -1,28 +1,28 @@
 {
   "name": "ninjagoat-messages",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "dependencies": {
     "classnames": "^2.2.5",
     "inversify": "^4.3.0",
     "lodash": "~4.10.0",
-    "material-ui": "1.0.0-beta.16",
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1",
+    "material-ui": "1.0.0-beta.34",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "reflect-metadata": "~0.1.3",
     "rx": "~4.1.0"
   },
   "devDependencies": {
     "@types/lodash": "4.14.44",
     "@types/node": "~6.0.52",
-    "@types/react": "^15.0.38",
+    "@types/react": "16.0.36",
     "@types/expect.js": "~0.3.29",
     "@types/mocha": "~2.2.34",
     "expect.js": "~0.3.1",
     "typemoq": "1.5.0"
   },
   "peerDependencies": {
-    "ninjagoat": ">= 2.4.0 <= 3",
-    "ninjagoat-translations": "^3.2.0"
+    "ninjagoat": "^4.0.0",
+    "ninjagoat-translations": "^4.0.0"
   },
   "scripts": {
     "test": "smild test"
