@@ -1,3 +1,7 @@
+# 3.0.2
+
+Bump material-ui library
+
 # 3.0.1
 
 Avoid duplicated lodash versions
