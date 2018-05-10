@@ -1,6 +1,9 @@
 language: node_js
 node_js:
 - '6'
+before_install:
+- npm i npm@6 -g
+- npm --version
 install:
 - npm install smild@4.13.0 -g
 - npm install ninjagoat@4.0.0 ninjagoat-translations@4.0.0
