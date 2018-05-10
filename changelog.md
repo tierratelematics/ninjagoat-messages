@@ -1,3 +1,7 @@
+# 3.1.0
+
+Optional ninjagoat-translations
+
 # 3.0.2
 
 Bump material-ui library
