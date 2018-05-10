@@ -6,7 +6,7 @@ before_install:
 - npm --version
 install:
 - npm install smild@4.13.0 -g
-- npm install ninjagoat@4.0.0 ninjagoat-translations@4.0.0
+- npm install ninjagoat@4.0.0 --no-save
 - npm install
 script:
 - smild test
