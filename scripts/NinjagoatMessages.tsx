@@ -2,7 +2,9 @@ import DefaultConfig from "./DefaultConfig";
 import * as classNames from "classnames";
 import { Button, Snackbar } from "material-ui";
 import { lazyInject } from "ninjagoat";
-import { FormattedMessage } from "ninjagoat-translations";
+const tryRequire = require("try-require");
+const translations = tryRequire("ninjagoat-translations");
+const FormattedMessage = translations ? translations.FormattedMessage: null;
 import * as React from "react";
 import * as Rx from "rx";
 
@@ -50,7 +52,7 @@ class NinjagoatMessages extends React.Component<{}, INinjagoatMessagesState> {
                     size="small"
                     className={classNames("snackbar__btn-close", this.state.message && this.state.message.type ? `snackbar__btn-close--${this.state.message.type}` : null)}
                     onClick={() => this.onAlertDismissed()}>
-                    <FormattedMessage id="glossary.close" defaultMessage="glossary.close" />
+                    {FormattedMessage ? <FormattedMessage id="glossary.close" defaultMessage="glossary.close" /> : <span>Close</span>}
                 </Button>
             ]} />;
     }
