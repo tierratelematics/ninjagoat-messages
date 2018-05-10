@@ -1,7 +1,6 @@
 import "reflect-metadata";
 
 import expect = require("expect.js");
-import { ITranslationsManager } from "ninjagoat-translations";
 import * as TypeMoq from "typemoq";
 
 import { IMessageData } from "../scripts/interfaces/IMessageData";
@@ -11,7 +10,6 @@ describe("Given an alertService", () => {
 
     let subject: MessagesService;
     let notifications: IMessageData[];
-    let mockTranslationsManager: TypeMoq.IMock<ITranslationsManager>;
 
     beforeEach(() => {
         notifications = [];
