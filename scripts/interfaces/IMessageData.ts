@@ -1,4 +1,4 @@
-import { SnackBarOrigin } from "material-ui/Snackbar";
+import { SnackBarOrigin } from "@material-ui/core/Snackbar";
 
 import { MessageType } from "../MessageType";
 

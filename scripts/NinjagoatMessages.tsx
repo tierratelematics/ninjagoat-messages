@@ -1,6 +1,5 @@
 import DefaultConfig from "./DefaultConfig";
 import * as classNames from "classnames";
-import { Button, Snackbar } from "material-ui";
 import { lazyInject } from "ninjagoat";
 const tryRequire = require("try-require");
 const translations = tryRequire("ninjagoat-translations");
@@ -10,6 +9,8 @@ import * as Rx from "rx";
 
 import { IMessageData } from "./interfaces/IMessageData";
 import MessagesService from "./MessagesService";
+import Snackbar from "@material-ui/core/Snackbar";
+import Button from "@material-ui/core/Button";
 
 export interface INinjagoatMessagesState {
     open: boolean;
