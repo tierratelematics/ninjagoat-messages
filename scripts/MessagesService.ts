@@ -40,7 +40,8 @@ class MessagesService implements IMessagesService, Rx.IObservable<IMessageData> 
             message: message,
             type: type,
             timeout: timeout,
-            position: this.config.position
+            position: this.config.position,
+            view: this.config.view
         };
 
         this.subject.onNext(configData);
