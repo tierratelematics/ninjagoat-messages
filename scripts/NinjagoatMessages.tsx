@@ -21,6 +21,7 @@ class NinjagoatMessages extends React.Component<{}, INinjagoatMessagesState> {
 
     @lazyInject("IMessagesService")
     private messagesService: MessagesService;
+
     private subscription: Rx.Disposable;
 
     componentWillMount(): void {
@@ -42,28 +43,33 @@ class NinjagoatMessages extends React.Component<{}, INinjagoatMessagesState> {
     }
 
     render() {
-        return <Snackbar className="snackbar"
-            open={this.state.open}
-            anchorOrigin={this.state.message ? this.state.message.position : new DefaultConfig().position}
-            autoHideDuration={this.state.message ? this.state.message.timeout : undefined}
-            onClose={() => this.onAlertDismissed()}
-            message={<span>{this.state && this.state.message ? this.state.message.message : null}</span>}
-            action={[
-                <Button key="close"
-                    size="small"
-                    className={classNames("snackbar__btn-close", this.state.message && this.state.message.type ? `snackbar__btn-close--${this.state.message.type}` : null)}
-                    onClick={() => this.onAlertDismissed()}>
-                    {FormattedMessage ? <FormattedMessage id="glossary.close" defaultMessage="glossary.close" /> : <span>Close</span>}
-                </Button>
-            ]} />;
+        return this.state.message && this.state.message.view
+            ? this.state.message.view(this.state, this.onAlertDismissed.bind(this))
+            : (<Snackbar className="snackbar"
+                         open={this.state.open}
+                         anchorOrigin={this.state.message ? this.state.message.position : new DefaultConfig().position}
+                         autoHideDuration={this.state.message ? this.state.message.timeout : undefined}
+                         onClose={(evt, reason) => this.onAlertDismissed(evt, reason)}
+                         message={<span>{this.state && this.state.message ? this.state.message.message : null}</span>}
+                         action={[
+                             <Button key="close"
+                                     size="small"
+                                     className={classNames("snackbar__btn-close", this.state.message && this.state.message.type ? `snackbar__btn-close--${this.state.message.type}` : null)}
+                                     onClick={() => this.onAlertDismissed(null, null)}>
+                                 {FormattedMessage ?
+                                     <FormattedMessage id="glossary.close" defaultMessage="glossary.close"/> :
+                                     <span>Close</span>}
+                             </Button>
+                         ]}/>
+            );
     }
 
-    private onAlertDismissed() {
+    private onAlertDismissed(evt, reason) {
+        if (reason === "clickaway") return;
         this.setState({
             open: false
         });
     }
-
 }
 
 export default NinjagoatMessages;
