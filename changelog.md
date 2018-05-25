@@ -1,3 +1,9 @@
+# 4.0.0
+
+* Update to material-ui v1
+* Add the ability to override messages' default view
+* Minor fixes
+
 # 3.1.0
 
 Optional ninjagoat-translations
