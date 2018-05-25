@@ -12,7 +12,7 @@ import { MessageType } from "./MessageType";
 class MessagesService implements IMessagesService, Rx.IObservable<IMessageData> {
     private subject = new Rx.Subject<IMessageData>();
 
-    constructor( @inject("IAlertConfig") @optional() private config: IMessagesConfig = new DefaultConfig()) { }
+    constructor( @inject("IMessagesConfig") @optional() private config: IMessagesConfig = new DefaultConfig()) { }
 
     success(message: string, timeout?: number) {
         this.createMessage(message, "success", timeout || this.config.timeout);
@@ -40,7 +40,8 @@ class MessagesService implements IMessagesService, Rx.IObservable<IMessageData> 
             message: message,
             type: type,
             timeout: timeout,
-            position: this.config.position
+            position: this.config.position,
+            view: this.config.view
         };
 
         this.subject.onNext(configData);
