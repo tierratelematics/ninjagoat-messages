@@ -1,3 +1,7 @@
+# 4.0.1
+
+Update to material-ui v1.4 and fix a type name
+
 # 4.0.0
 
 * Update to material-ui v1
