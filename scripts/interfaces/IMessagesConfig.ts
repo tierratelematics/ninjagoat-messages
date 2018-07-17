@@ -1,8 +1,8 @@
 import * as React from "react";
-import { SnackBarOrigin } from "@material-ui/core/Snackbar";
+import { SnackbarOrigin } from "@material-ui/core/Snackbar";
 
 export interface IMessagesConfig {
     timeout: number;
-    position: SnackBarOrigin;
+    position: SnackbarOrigin;
     view?: (props, onClose) => React.ReactElement<any>;
 }
