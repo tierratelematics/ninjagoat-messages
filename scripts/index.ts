@@ -6,4 +6,4 @@ export { default as NinjagoatMessages, INinjagoatMessagesState } from "./Ninjago
 export { IMessageData} from "./interfaces/IMessageData";
 export { IMessagesConfig } from "./interfaces/IMessagesConfig";
 export { MessageType } from "./MessageType";
-export { SnackBarOrigin } from "@material-ui/core/Snackbar";
+export { SnackbarOrigin } from "@material-ui/core/Snackbar";

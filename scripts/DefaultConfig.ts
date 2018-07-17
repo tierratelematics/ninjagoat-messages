@@ -1,10 +1,10 @@
-import { SnackBarOrigin } from "@material-ui/core/Snackbar";
+import { SnackbarOrigin } from "@material-ui/core/Snackbar";
 
 import { IMessagesConfig } from "./interfaces/IMessagesConfig";
 
 class DefaultConfig implements IMessagesConfig {
     timeout = 5000;
-    position: SnackBarOrigin = {
+    position: SnackbarOrigin = {
         vertical: "bottom",
         horizontal: "center"
     };
