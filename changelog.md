@@ -1,3 +1,7 @@
+# 4.0.3 
+
+Update to material-ui v3.9.1
+
 # 4.0.2
 
 Update to material-ui v3
