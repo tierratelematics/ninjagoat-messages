@@ -1,8 +1,7 @@
 import DefaultConfig from "./DefaultConfig";
 import * as classNames from "classnames";
 import { lazyInject } from "ninjagoat";
-const tryRequire = require("try-require");
-const translations = tryRequire("ninjagoat-translations");
+const translations = require("ninjagoat-translations");
 const FormattedMessage = translations ? translations.FormattedMessage: null;
 import * as React from "react";
 import * as Rx from "rx";
