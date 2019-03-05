@@ -1,8 +1,6 @@
 import DefaultConfig from "./DefaultConfig";
 import * as classNames from "classnames";
 import { lazyInject } from "ninjagoat";
-const translations = require("ninjagoat-translations");
-const FormattedMessage = translations ? translations.FormattedMessage: null;
 import * as React from "react";
 import * as Rx from "rx";
 
@@ -55,9 +53,7 @@ class NinjagoatMessages extends React.Component<{}, INinjagoatMessagesState> {
                                      size="small"
                                      className={classNames("snackbar__btn-close", this.state.message && this.state.message.type ? `snackbar__btn-close--${this.state.message.type}` : null)}
                                      onClick={() => this.onAlertDismissed(null, null)}>
-                                 {FormattedMessage ?
-                                     <FormattedMessage id="glossary.close" defaultMessage="glossary.close"/> :
-                                     <span>Close</span>}
+                                     <span>Close</span>
                              </Button>
                          ]}/>
             );
