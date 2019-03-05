@@ -1,6 +1,7 @@
 import DefaultConfig from "./DefaultConfig";
 import * as classNames from "classnames";
 import { lazyInject } from "ninjagoat";
+const FormattedMessage = require("ninjagoat-translations").FormattedMessage;
 import * as React from "react";
 import * as Rx from "rx";
 
@@ -14,7 +15,7 @@ export interface INinjagoatMessagesState {
     message: IMessageData;
 }
 
-class NinjagoatMessages extends React.Component<{}, INinjagoatMessagesState> {
+class LocalizedNinjagoatMessages extends React.Component<{}, INinjagoatMessagesState> {
 
     @lazyInject("IMessagesService")
     private messagesService: MessagesService;
@@ -53,7 +54,7 @@ class NinjagoatMessages extends React.Component<{}, INinjagoatMessagesState> {
                                      size="small"
                                      className={classNames("snackbar__btn-close", this.state.message && this.state.message.type ? `snackbar__btn-close--${this.state.message.type}` : null)}
                                      onClick={() => this.onAlertDismissed(null, null)}>
-                                     <span>Close</span>
+                                     <FormattedMessage id="glossary.close" defaultMessage="glossary.close"/>
                              </Button>
                          ]}/>
             );
@@ -67,4 +68,4 @@ class NinjagoatMessages extends React.Component<{}, INinjagoatMessagesState> {
     }
 }
 
-export default NinjagoatMessages;
+export default LocalizedNinjagoatMessages;
