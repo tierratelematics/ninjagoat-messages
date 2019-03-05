@@ -1,6 +1,6 @@
 {
   "name": "ninjagoat-messages",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "dependencies": {
     "@material-ui/core": "3.9.2",
     "classnames": "^2.2.5",
