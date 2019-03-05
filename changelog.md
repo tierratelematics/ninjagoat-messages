@@ -1,3 +1,9 @@
+# 5.0.0
+
+* Remove try-require dependency
+* Unlocalize default messages component
+* Add an unexported localized version on messages component 
+
 # 4.0.3 
 
 Update to material-ui v3.9.1
