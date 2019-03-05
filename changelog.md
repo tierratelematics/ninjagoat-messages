@@ -1,3 +1,7 @@
+# 5.0.1
+
+Update material-ui, react typings, typescript versions
+
 # 5.0.0
 
 * Remove try-require dependency
