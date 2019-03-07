@@ -1,3 +1,7 @@
+# 5.0.2
+
+Fix dependencies versions
+
 # 5.0.1
 
 Update material-ui, react typings, typescript versions
