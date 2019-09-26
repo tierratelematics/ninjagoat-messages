@@ -1,3 +1,7 @@
+# 6.0.1
+
+Update node types
+
 # 6.0.0
 
 Update to material-ui v4
