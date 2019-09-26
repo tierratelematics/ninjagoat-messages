@@ -1,3 +1,7 @@
+# 6.0.0
+
+Update to material-ui v4
+
 # 5.0.2
 
 Fix dependencies versions
