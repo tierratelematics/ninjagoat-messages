@@ -1,6 +1,6 @@
 {
   "name": "ninjagoat-messages",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "dependencies": {
     "@material-ui/core": "^4.4.3",
     "@material-ui/styles": "^4.4.3",
@@ -16,7 +16,7 @@
     "@types/expect.js": "~0.3.29",
     "@types/lodash": "4.14.44",
     "@types/mocha": "~2.2.34",
-    "@types/node": "~6.0.52",
+    "@types/node": "^12.7.8",
     "@types/react": "16.8.6",
     "expect.js": "~0.3.1",
     "typemoq": "1.5.0",
