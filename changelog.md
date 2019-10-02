@@ -1,3 +1,7 @@
+# 6.0.2
+
+Bump version
+
 # 6.0.1
 
 Update node types
