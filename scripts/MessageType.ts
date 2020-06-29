@@ -1,1 +1,1 @@
-export type MessageType = "success" | "error" | "info";
+export type MessageType = "success" | "error" | "info" | "warning";
