@@ -1,3 +1,7 @@
+# 6.1.0
+
+Add "warning" message type
+
 # 6.0.2
 
 Bump version

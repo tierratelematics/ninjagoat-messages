@@ -26,6 +26,10 @@ class MessagesService implements IMessagesService, Rx.IObservable<IMessageData> 
         this.createMessage(message, "error", undefined);
     }
 
+    warning(message: string, timeout?: number) {
+        this.createMessage(message, "warning", timeout || this.config.timeout);
+    }
+
     subscribe(observer: Rx.IObserver<IMessageData>): Rx.IDisposable;
     subscribe(onNext?: (value: IMessageData) => void, onError?: (exception: any) => void, onCompleted?: () => void): Rx.IDisposable;
     subscribe(observerOrOnNext?: (Rx.IObserver<IMessageData>) | ((value: IMessageData) => void), onError?: (exception: any) => void, onCompleted?: () => void): Rx.IDisposable {

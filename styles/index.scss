@@ -1,6 +1,8 @@
 $snackbar-btn-success-color: #3c763d !default;
 $snackbar-btn-error-color: #a94442 !default;
 $snackbar-btn-info-color: #2E96D6 !default;
+$snackbar-btn-warning-color: #ff9800 !default;
+
 .snackbar {
     .snackbar__btn-close {
         &:focus {
@@ -22,6 +24,12 @@ $snackbar-btn-info-color: #2E96D6 !default;
             color: $snackbar-btn-info-color;
             &:hover {
                 background-color: rgba($snackbar-btn-info-color, .12);
+            }
+        }
+        &.snackbar__btn-close--warning {
+            color: $snackbar-btn-warning-color;
+            &:hover {
+                background-color: rgba($snackbar-btn-warning-color, .12);
             }
         }
     }
