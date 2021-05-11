@@ -3,12 +3,13 @@ import * as classNames from "classnames";
 import { lazyInject } from "ninjagoat";
 const FormattedMessage = require("ninjagoat-translations").FormattedMessage;
 import * as React from "react";
-import * as Rx from "rx";
+import {Unsubscribable} from "rxjs";
 
 import { IMessageData } from "./interfaces/IMessageData";
 import MessagesService from "./MessagesService";
 import Snackbar from "@material-ui/core/Snackbar";
 import Button from "@material-ui/core/Button";
+
 
 export interface INinjagoatMessagesState {
     open: boolean;
@@ -20,7 +21,7 @@ class LocalizedNinjagoatMessages extends React.Component<{}, INinjagoatMessagesS
     @lazyInject("IMessagesService")
     private messagesService: MessagesService;
 
-    private subscription: Rx.Disposable;
+    private subscription: Unsubscribable;
 
     componentWillMount(): void {
         this.setState({
@@ -37,7 +38,7 @@ class LocalizedNinjagoatMessages extends React.Component<{}, INinjagoatMessagesS
     }
 
     componentWillUnmount(): void {
-        if (this.subscription) this.subscription.dispose();
+        if (this.subscription) this.subscription.unsubscribe();
     }
 
     render() {
