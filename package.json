@@ -16,15 +16,15 @@
     "@types/expect.js": "~0.3.29",
     "@types/lodash": "4.14.44",
     "@types/mocha": "~2.2.34",
-    "@types/node": "^15.0.2",
+    "@types/node": "^16.3.2",
     "@types/react": "16.8.6",
     "expect.js": "~0.3.1",
     "typemoq": "1.5.0",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
-    "ninjagoat": "^4.0.0",
-    "ninjagoat-translations": "^4.0.0"
+    "ninjagoat": "5.0.0-rc1",
+    "ninjagoat-translations": "5.0.0-rc.0"
   },
   "scripts": {
     "test": "smild test"
