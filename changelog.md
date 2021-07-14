@@ -1,3 +1,7 @@
+# 7.0.0-rc.0
+
+Update to rxjs 6
+
 # 6.1.0
 
 Add "warning" message type
