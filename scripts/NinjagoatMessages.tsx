@@ -1,5 +1,5 @@
 import DefaultConfig from "./DefaultConfig";
-import * as classNames from "classnames";
+import classNames from "classnames";
 import { lazyInject } from "ninjagoat";
 import * as React from "react";
 import {Unsubscribable} from "rxjs";

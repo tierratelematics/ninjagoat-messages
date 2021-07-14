@@ -1,5 +1,5 @@
 import DefaultConfig from "./DefaultConfig";
-import * as classNames from "classnames";
+import classNames from "classnames";
 import { lazyInject } from "ninjagoat";
 const FormattedMessage = require("ninjagoat-translations").FormattedMessage;
 import * as React from "react";
